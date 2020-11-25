@@ -1,0 +1,66 @@
+<div class="container">
+
+    <div class="first-container">
+        <form #myForm="ngForm">
+            <div class="form-group">
+                <label for="firstname">FirstName</label>
+                <input type="text" class="form-control" placeholder="Enter FirstName"
+                name="firstname" [(ngModel)]="formObj.firstname">
+            </div>
+
+            <div class="form-group">
+                <label for="lastname">LastName</label>
+                <input type="text" class="form-control" placeholder="Enter LastName"
+                name="lastname" [(ngModel)]="formObj.lastname">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" placeholder="Enter Email"
+                name="email" [(ngModel)]="formObj.email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" placeholder="Enter Password"
+                name="password" [(ngModel)]="formObj.password">
+            </div>
+
+            <button type="button" class="btn btn-primary"
+            (click)="addData(myForm.value)">
+                Submit
+            </button>
+
+            <button type="button" class="btn btn-dark"
+            (click)="updateData()">
+                Update
+            </button>
+        </form>
+    </div>
+
+    <div class="second-container">
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of allData">
+                <td>{{data.firstname}}</td>
+                <td>{{data.lastname}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.password}}</td>
+
+                <button type="button" (click)="editData(data)">Edit</button>
+
+                <button type="button" (click)="deleteData(data)">Delete</button>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
